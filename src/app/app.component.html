@@ -1,0 +1,35 @@
+<!-- <form> -->
+
+<input (change)="onFileSelected()" type="file" id="file">
+<input type="text" [(ngModel)]="stringToSearch" />
+<button (click)="search()">Search</button>
+
+<!-- <div id="outerContainer">
+  <div class="pdf-container">
+    <pdf-viewer [src]="pdfSrc" [rotation]="0" [original-size]="false" [show-all]="true" [fit-to-page]="false" [zoom]="1"
+      [zoom-scale]="'page-width'" [stick-to-page]="false" [render-text]="true" [external-link-target]="'blank'"
+      [autoresize]="true" [show-borders]="false"></pdf-viewer>
+  </div>
+</div> -->
+
+<pdf-viewer [src]="pdfSrc" [render-text]="true" [original-size]="false" style="width: 100%; height: 400px" [zoom]="1">
+</pdf-viewer>
+
+
+<!-- <input type="file" (change)="addfile($event)" placeholder="Upload file"
+  accept=".csv,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"> -->
+
+<input type="file" (change)="onFileChange($event)" multiple="false" />
+<table class="sjs-table">
+  <tbody>
+    <tr *ngFor="let row of data">
+      <td *ngFor="let val of row">
+        {{val}}
+      </td>
+    </tr>
+  </tbody>
+</table>
+<button (click)="export()">Export!</button>
+<!-- </form> -->
+
+<router-outlet></router-outlet>
